@@ -1,3 +1,5 @@
+import { SearchBox } from '@mapbox/search-js-react';
+import { QRCodeSVG } from 'qrcode.react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import WeatherContainer from './WeatherContainer';
@@ -5,17 +7,20 @@ import getLongLat from './api/mapBox';
 import getCurrentWeather from './api/weatherStack';
 import geolocationIcon from './assets/geolocation.svg';
 import searchIcon from './assets/search.svg';
-import './main.css';
 
+import Loading from './Loading';
+import './main.css';
 function App() {
+    const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
     const [loading, setLoading] = useState(false);
     const [weatherLocation, setWeatherLocation] = useState('');
     const [weatherInfo, setWeatherInfo] = useState({});
     const [inProp, setInProp] = useState(false);
+    const nodeRef = useRef(null);
 
     function clickHandler() {
         if (weatherLocation === '') return alert('Please enter a location');
-        setInProp(!inProp);
+        setInProp(false);
         setLoading(true);
         getWeather(weatherLocation);
     }
@@ -23,16 +28,20 @@ function App() {
     function keyHandler(e) {
         if (e.keyCode !== 13) return;
         if (weatherLocation === '') return alert('Please enter a location');
-        setInProp(!inProp);
+        setInProp(false);
         setLoading(true);
         getWeather(weatherLocation);
     }
 
     function handleGeolocation() {
-        window.navigator.geolocation.getCurrentPosition((pos) => {
-            setLoading(true);
-            return getWeather([pos.coords.longitude, pos.coords.latitude]);
-        });
+        window.navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                setLoading(true);
+                return getWeather([pos.coords.longitude, pos.coords.latitude]);
+            },
+            (err) => console.log(err),
+            {}
+        );
     }
 
     async function getWeather(search_text) {
@@ -40,12 +49,37 @@ function App() {
         const weather = await getCurrentWeather(longlat);
         setWeatherInfo(weather);
         setLoading(false);
-        setInProp(!inProp);
+        setInProp(true);
         setWeatherLocation('');
     }
 
+    async function getWeatherAuto(longlat) {
+        const weather = await getCurrentWeather(longlat);
+        setWeatherInfo(weather);
+        setLoading(false);
+        setInProp(true);
+        setWeatherLocation('');
+    }
+
+    const duration = 300;
+    const defaultStyle = {
+        transition: `${duration}ms ease-in-out`,
+        opacity: 0,
+    };
+
+    const transitionStyles = {
+        entering: { opacity: 1 },
+        entered: { opacity: 1 },
+        exiting: { opacity: 0 },
+        exited: { opacity: 0 },
+    };
+
     return (
         <main className="main" key={'main'}>
+            <div className="qr">
+                <div>This site is meant for mobile, try it!</div>
+                <QRCodeSVG className="qrcode" value={window.location.href} />
+            </div>
             <div className="input-container">
                 <button
                     className="input_geolocation"
@@ -54,18 +88,31 @@ function App() {
                 >
                     <img src={geolocationIcon} alt="" />
                 </button>
-
-                <input
+                <SearchBox
+                    className="input_search"
+                    accessToken={accessToken}
+                    value={weatherLocation}
+                    onChange={(e) => setWeatherLocation(e)}
+                    onRetrieve={(e) =>
+                        getWeatherAuto([
+                            e.features[0].properties.coordinates.longitude,
+                            e.features[0].properties.coordinates.latitude,
+                        ])
+                    }
+                    placeholder="Toronto"
+                />
+                {/* <input
                     className="input_search"
                     type="text"
-                    name=""
+                    name="address"
+                    autocomplete="street-address"
                     id=""
                     placeholder="Toronto"
                     onChange={(e) => setWeatherLocation(e.currentTarget.value)}
                     value={weatherLocation}
                     onKeyUp={(e) => keyHandler(e)}
                     disabled={loading}
-                />
+                /> */}
 
                 <button
                     className="input_button"
@@ -75,16 +122,29 @@ function App() {
                     <img src={searchIcon} alt="" />
                 </button>
             </div>
-
-            {/* {loading ? (
-                <div>Loading...</div>
-            ) : !weatherInfo ? (
-                <div></div>
-            ) : ( */}
-            {!loading && (
-                <WeatherContainer weatherInfo={weatherInfo} in={inProp} />
-            )}
-            {/* )} */}
+            <Transition
+                nodeRef={nodeRef}
+                in={inProp}
+                timeout={duration}
+                unmountOnExit={true}
+            >
+                {(state) => (
+                    <div
+                        className="weather-container"
+                        key={weatherInfo}
+                        ref={nodeRef}
+                        style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state],
+                        }}
+                    >
+                        <WeatherContainer
+                            weatherInfo={weatherInfo}
+                            in={inProp}
+                        />
+                    </div>
+                )}
+            </Transition>
         </main>
     );
 }

@@ -1,10 +1,8 @@
 import axios from 'axios';
-import getCurrentWeather from './weatherStack';
 const baseURL = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
 
 const api_key = {
-    access_token:
-        'pk.eyJ1IjoibW9oc2lucmlhei1tYXBib3giLCJhIjoiY2wzYnl0b25lMDR5azNjbGRwcGRsemprbyJ9._axuZbPqNs3lkakigNi_Lw',
+    access_token: import.meta.env.VITE_MAPBOX_TOKEN,
 };
 
 //RESPONSE in LONG LAT

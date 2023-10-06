@@ -1,16 +1,19 @@
 import axios from 'axios';
 const baseURL = 'http://api.weatherstack.com';
 
-const api_key = { access_key: '978484962ad496f6c495ca11a267f961' };
+const api_key = { access_key: import.meta.env.VITE_WEATHERSTACK_TOKEN };
 
 const getCurrentWeather = async ([long, lat]) => {
+    console.log([long, lat]);
     try {
         const response = await axios.get(`${baseURL}/current`, {
             params: {
                 ...api_key,
-                query: `${lat.toPrecision(4)},${long.toPrecision(4)}`,
+                query: `${lat.toPrecision(8)},${long.toPrecision(8)}`,
+                // query: 'Mississauga',
             },
         });
+        console.log(response.data);
         if (response.status === 200) return response.data;
     } catch (error) {
         console.log(error);
