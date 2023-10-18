@@ -3,8 +3,6 @@ const baseURL = 'http://api.weatherstack.com';
 
 const api_key = { access_key: import.meta.env.VITE_WEATHERSTACK_TOKEN };
 
-console.log(api_key);
-
 const getCurrentWeather = async ([long, lat]) => {
     try {
         const response = await axios.get(`${baseURL}/current`, {

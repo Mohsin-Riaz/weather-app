@@ -14,6 +14,10 @@ import weatherCode from './weatherCode';
 
 const WeatherContainer = (props) => {
     const { weatherInfo } = props;
+    console.log(weatherInfo);
+    if (weatherInfo === undefined)
+        return <div style={{ color: 'white' }}>Error</div>;
+
     return (
         <>
             <div className="weather_location">

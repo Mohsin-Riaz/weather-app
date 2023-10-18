@@ -5,8 +5,6 @@ const api_key = {
     access_token: import.meta.env.VITE_MAPBOX_TOKEN,
 };
 
-console.log(api_key);
-
 //RESPONSE in LONG LAT
 
 const getLongLat = async (search_text) => {
