@@ -5,7 +5,7 @@ const getCurrentWeather = async ([long, lat]) => {
         const response = await axios({
             method: 'GET',
             url:
-                'https://api.weatherapi.com/v1/current.json' +
+                'https://cors-anywhere.herokuapp.com/https://api.weatherapi.com/v1/current.json' +
                 `?key=${apiKey}&q=${lat},${long}` +
                 '&aqi=no',
         });

@@ -110,7 +110,6 @@ function App() {
                     <img src={searchIcon} alt="" />
                 </button>
             </div>
-
             <Transition
                 nodeRef={nodeRef}
                 in={inProp}
@@ -134,6 +133,12 @@ function App() {
                     </div>
                 )}
             </Transition>
+            <span style={{ position: 'absolute', top: 0, left: 0 }}>
+                Powered by{' '}
+                <a href="https://www.weatherapi.com/" title="Free Weather API">
+                    WeatherAPI.com
+                </a>
+            </span>
         </main>
     );
 }
