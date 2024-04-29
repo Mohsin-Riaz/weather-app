@@ -1,14 +1,14 @@
 import { SearchBox } from '@mapbox/search-js-react';
 import { QRCodeSVG } from 'qrcode.react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Transition } from 'react-transition-group';
+import Loading from './Loading';
 import WeatherContainer from './WeatherContainer';
 import getLongLat from './api/mapBox';
 import getCurrentWeather from './api/weatherStack';
 import geolocationIcon from './assets/geolocation.svg';
 import searchIcon from './assets/search.svg';
 
-import Loading from './Loading';
 import './main.css';
 function App() {
     const accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -101,18 +101,6 @@ function App() {
                     }
                     placeholder="Toronto"
                 />
-                {/* <input
-                    className="input_search"
-                    type="text"
-                    name="address"
-                    autocomplete="street-address"
-                    id=""
-                    placeholder="Toronto"
-                    onChange={(e) => setWeatherLocation(e.currentTarget.value)}
-                    value={weatherLocation}
-                    onKeyUp={(e) => keyHandler(e)}
-                    disabled={loading}
-                /> */}
 
                 <button
                     className="input_button"
@@ -122,6 +110,7 @@ function App() {
                     <img src={searchIcon} alt="" />
                 </button>
             </div>
+
             <Transition
                 nodeRef={nodeRef}
                 in={inProp}

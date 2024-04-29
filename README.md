@@ -9,4 +9,5 @@ Currently, two official plugins are available:
 
 # React + Vite
 
-Uses mapbox and weatherstack API.
+Uses mapbox API for Long/Lat query.
+Uses weatherAPI for weather info.
