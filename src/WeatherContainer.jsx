@@ -14,7 +14,6 @@ import weatherCode from './weatherCode';
 
 const WeatherContainer = (props) => {
     const { weatherInfo } = props;
-    console.log(weatherInfo);
     if (weatherInfo === undefined)
         return <div style={{ color: 'white' }}>Error</div>;
 
@@ -34,13 +33,17 @@ const WeatherContainer = (props) => {
             <div className="weather">
                 <div className="weather_current">
                     <div className="weather_current__icon">
-                        {weatherCode[weatherInfo?.current?.weather_code]?.icon}
+                        {
+                            weatherCode[weatherInfo?.current?.condition?.code]
+                                ?.icon
+                        }
                     </div>
                     <div className="weather_current__desc">
                         <div>
                             {
-                                weatherCode[weatherInfo?.current?.weather_code]
-                                    ?.description
+                                weatherCode[
+                                    weatherInfo?.current?.condition?.code
+                                ]?.description
                             }
                         </div>
                     </div>
@@ -50,13 +53,13 @@ const WeatherContainer = (props) => {
                                 <WiThermometer />
                             </div>
                             <div className="weather_current__temp__text">
-                                {weatherInfo?.current?.temperature}°C
+                                {weatherInfo?.current?.temp_c}°C
                             </div>
                         </div>
                     </div>
                     <div className="weather_current__feels">
                         <div>
-                            Feels like: {weatherInfo?.current?.feelslike}
+                            Feels like: {weatherInfo?.current?.feelslike_c}
                             °C
                         </div>
                     </div>
@@ -65,15 +68,16 @@ const WeatherContainer = (props) => {
                     <div className="weather_info__row">
                         <div className="weather_info__row__icon">
                             {
-                                weatherCode[weatherInfo?.current?.weather_code]
-                                    ?.icon
+                                weatherCode[
+                                    weatherInfo?.current?.condition?.code
+                                ]?.icon
                             }
                         </div>
                         <div className="weather_info__row__text">
                             <div>
                                 {
                                     weatherCode[
-                                        weatherInfo?.current?.weather_code
+                                        weatherInfo?.current?.condition?.code
                                     ]?.description
                                 }
                             </div>
@@ -85,7 +89,7 @@ const WeatherContainer = (props) => {
                             <WiRaindrops />
                         </div>
                         <div className="weather_info__row__text">
-                            <div>{weatherInfo?.current?.precip}% Chance</div>
+                            <div>{weatherInfo?.current?.precip_mm} mm</div>
                         </div>
                     </div>
 
@@ -103,7 +107,7 @@ const WeatherContainer = (props) => {
                             <WiCloudyGusts />
                         </div>
                         <div className="weather_info__row__text">
-                            <div>{weatherInfo?.current?.wind_speed} km/h</div>
+                            <div>{weatherInfo?.current?.wind_kph} km/h</div>
                         </div>
                     </div>
 
@@ -112,7 +116,7 @@ const WeatherContainer = (props) => {
                             <WiBarometer />
                         </div>
                         <div className="weather_info__row__text">
-                            <div>{weatherInfo?.current?.pressure} mbar</div>
+                            <div>{weatherInfo?.current?.pressure_mb} mbar</div>
                         </div>
                     </div>
 
@@ -122,8 +126,8 @@ const WeatherContainer = (props) => {
                         </div>
                         <div className="weather_info__row__text">
                             <div>
-                                {weatherInfo?.current?.uv_index}{' '}
-                                {UvIndex(weatherInfo?.current?.uv_index)}
+                                {weatherInfo?.current?.uv}{' '}
+                                {UvIndex(weatherInfo?.current?.uv)}
                             </div>
                         </div>
                     </div>

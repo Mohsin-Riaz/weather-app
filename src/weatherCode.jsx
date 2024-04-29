@@ -17,192 +17,196 @@ import {
 } from 'react-icons/wi';
 
 const weatherCode = {
-    113: {
+    1000: {
         description: 'Sunny',
         icon: <WiDaySunny />,
     },
-    116: {
+    1003: {
         description: 'Partly Cloudy',
         icon: <WiNightPartlyCloudy />,
     },
-    119: {
+    1006: {
         description: 'Cloudy',
         icon: <WiCloudy />,
     },
-    122: {
+    1009: {
         description: 'Overcast',
         icon: <WiDaySunnyOvercast />,
     },
-    143: {
+    1030: {
         description: 'Mist',
         icon: <WiFog />,
     },
-    176: {
+    1063: {
         description: 'Patchy rain nearby',
         icon: <WiDayRain />,
     },
-    179: {
+    1066: {
         description: 'Patchy snow nearby',
         icon: <WiDaySnow />,
     },
-    182: {
+    1069: {
         description: 'Patchy sleet nearby',
         icon: <WiNightSleet />,
     },
-    185: {
+    1072: {
         description: 'Patchy freezing drizzle nearby',
         icon: <WiRainMix />,
     },
-    200: {
+    1087: {
         description: 'Thundery outbreaks in nearby',
         icon: <WiThunderstorm />,
     },
-    227: {
+    1114: {
         description: 'Blowing snow',
         icon: <WiSnowWind />,
     },
-    230: {
+    1117: {
         description: 'Blizzard',
         icon: <WiSnow />,
     },
-    248: {
+    1135: {
         description: 'Fog',
         icon: <WiFog />,
     },
-    260: {
+    1147: {
         description: 'Freezing fog',
         icon: <WiFog />,
     },
-    263: {
+    1150: {
         description: 'Patchy light drizzle',
         icon: <WiDayRain />,
     },
-    266: {
+    1153: {
         description: 'Light drizzle',
         icon: <WiDayRain />,
     },
-    281: {
+    1168: {
         description: 'Freezing drizzle',
         icon: <WiDayRain />,
     },
-    284: {
+    1171: {
         description: 'Heavy freezing drizzle',
         icon: <WiDayRain />,
     },
-    293: {
+    1180: {
         description: 'Patchy light rain',
         icon: <WiDayRain />,
     },
-    299: {
+    1183: {
+        description: 'Light rain',
+        icon: <WiDayRain />,
+    },
+    1186: {
         description: 'Moderate rain at times',
         icon: <WiDayRain />,
     },
-    302: {
+    1189: {
         description: 'Moderate rain',
         icon: <WiDayRain />,
     },
-    305: {
+    1192: {
         description: 'Heavy rain at times',
         icon: <WiDayRain />,
     },
-    308: {
+    1195: {
         description: 'Heavy rain',
         icon: <WiDayRain />,
     },
-    311: {
+    1198: {
         description: 'Light freezing rain',
         icon: <WiDayRain />,
     },
-    314: {
+    1201: {
         description: 'Moderate or Heavy freezing rain',
         icon: <WiDayRain />,
     },
-    317: {
+    1204: {
         description: 'Light sleet',
         icon: <WiSleet />,
     },
-    320: {
+    1207: {
         description: 'Moderate or heavy sleet',
         icon: <WiSleet />,
     },
-    323: {
+    1210: {
         description: 'Patchy light snow',
         icon: <WiSnow />,
     },
-    326: {
+    1213: {
         description: 'Light snow',
         icon: <WiSnow />,
     },
-    329: {
+    1216: {
         description: 'Patchy moderate snow',
         icon: <WiSnow />,
     },
-    332: {
+    1219: {
         description: 'Moderate snow',
         icon: <WiSnow />,
     },
-    335: {
+    1222: {
         description: 'Patchy heavy snow',
         icon: <WiSnow />,
     },
-    338: {
+    1225: {
         description: 'Heavy snow',
         icon: <WiSnow />,
     },
-    350: {
+    1237: {
         description: 'Ice pellets',
         icon: <WiSleet />,
     },
-    353: {
+    1240: {
         description: 'Light rain shower',
         icon: <WiShowers />,
     },
-    356: {
+    1243: {
         description: 'Moderate or heavy rain shower',
         icon: <WiShowers />,
     },
-    359: {
+    1246: {
         description: 'Torrential rain shower',
         icon: <WiShowers />,
     },
-    362: {
+    1249: {
         description: 'Light sleet showers',
         icon: <WiRainMix />,
     },
-    365: {
+    1252: {
         description: 'Moderate or heavy sleet showers',
         icon: <WiRainMix />,
     },
-    368: {
+    1255: {
         description: 'Light snow showers',
         icon: <WiRainMix />,
     },
-    371: {
+    1258: {
         description: 'Moderate or heavy snow showers',
         icon: <WiRainMix />,
     },
-    374: {
+    1261: {
         description: 'Light showers of ice pellets',
         icon: <WiRainMix />,
     },
-    377: {
+    1264: {
         description: 'Moderate or heavy showers of ice pellets',
         icon: <WiRainMix />,
     },
-    386: {
+    1273: {
         description: 'Patchy light rain in area with thunder',
         icon: <WiThunderstorm />,
     },
-    389: {
+    1276: {
         description: 'Moderate or heavy rain in area with thunder',
         icon: <WiThunderstorm />,
     },
-    392: {
-        description: '>Patchy light snow in area with thunder',
+    1279: {
+        description: 'Patchy light snow with thunder"',
         icon: <WiNightSnowThunderstorm />,
     },
-    395: {
-        description: '>Patchy light snow in area with thunder',
+    1282: {
+        description: 'Moderate or heavy snow with thunder',
         icon: <WiNightSnowThunderstorm />,
     },
 };

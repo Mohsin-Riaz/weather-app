@@ -11,13 +11,13 @@ import {
 
 const weatherCode = {
     N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
-    N: <WiDirectionUp />,
+    S: <WiDirectionDown />,
+    W: <WiDirectionLeft />,
+    E: <WiDirectionRight />,
+    NE: <WiDirectionUpRight />,
+    NW: <WiDirectionUpLeft />,
+    SE: <WiDirectionDownRight />,
+    SW: <WiDirectionDownLeft />,
 };
 
 export default weatherCode;
