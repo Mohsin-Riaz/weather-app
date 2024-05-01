@@ -15,6 +15,7 @@ jobs:
             VITE_WEATHERSTACK_TOKEN: ${{ secrets.VITE_WEATHERSTACK_TOKEN }}
             VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
             VITE_WEATHER_API_TOKEN: ${{ secrets.VITE_WEATHER_API_TOKEN }}
+            VITE_WEATHER_URL: ${{ secrets.VITE_WEATHER_URL }}
 
         steps:
             - name: Read Variables
