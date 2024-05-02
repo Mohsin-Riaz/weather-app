@@ -1,6 +1,6 @@
 import axios from 'axios';
 const apiKey = import.meta.env.VITE_WEATHER_API_TOKEN;
-const weatherApiUrl = import.meta.env.VITE_WEATHER_URL;
+// const weatherApiUrl = import.meta.env.VITE_WEATHER_URL;
 
 const getCurrentWeather = async ([long, lat]) => {
     // if (!weatherApiUrl) return new Error('No api connected');
